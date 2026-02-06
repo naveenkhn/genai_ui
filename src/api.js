@@ -1,9 +1,8 @@
 import axios from "axios";
 
 const apiClient = axios.create({
-  //baseURL: "https://intragpt-rag-backend-h9b2e8csg9ajaygr.westeurope-01.azurewebsites.net",
-  baseURL: "http://localhost:8000/",
-  timeout: 60000, // 60 seconds
+  baseURL: import.meta.env.VITE_API_BASE_URL,
+  timeout: Number(import.meta.env.VITE_API_TIMEOUT) || 60000,
 });
 
 export const askRAG = async (query, history) => {
